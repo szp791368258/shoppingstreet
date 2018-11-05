@@ -1,0 +1,31 @@
+server:
+  port: 7002
+spring:
+  application:
+    name: xc-address-provider
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/xc-shopingstreet?useSSL=true&characterEncoding=UTF-8
+    username: root
+    password: root
+  thymeleaf:
+      prefix: classpath:/templates/
+      suffix: .html
+  mvc:
+    static-path-pattern: /static/**
+eureka:
+  instance:
+    instance-id: xc-address-provider
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://60.205.207.9:6001/eureka/
+---
+spring:
+  zipkin:
+    base-url: http://60.205.207.9:7777
+  sleuth:
+    sampler:
+       percentage: 1.0
+logging:
+    level: info
